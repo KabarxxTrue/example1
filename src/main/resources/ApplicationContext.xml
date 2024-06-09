@@ -13,6 +13,14 @@
           class="com.kabarxx.example.ClassicalMusic">
     </bean>
 
+    <bean id="musicBean"
+          class="com.kabarxx.example.RapMusic">
+    </bean>
+
+    <bean id="musicBean"
+          class="com.kabarxx.example.RockMusic">
+    </bean>
+
     <bean id="musicPlayer"
           class="com.kabarxx.example.MusicPlayer">
         <property name="music" ref="musicBean"/>
