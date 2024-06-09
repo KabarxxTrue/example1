@@ -5,6 +5,8 @@ public class MusicPlayer {
     private String name;
     private int volume;
 
+    public MusicPlayer() {}
+
     public String getName() {
         return name;
     }
