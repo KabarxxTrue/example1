@@ -8,15 +8,12 @@ public class MusicPlayer {
 
     public MusicPlayer() {}
 
-    public MusicPlayer(RockMusic rockMusic,
-                       ClassicalMusic classicalMusic,
-                       RapMusic rapMusic) {
-        musicList.add(rockMusic);
-        musicList.add(classicalMusic);
-        musicList.add(rapMusic);
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public List<Music> getMusicList() {
-        return musicList;
+    public void playMusicList() {
+        for(Music music : musicList)
+            System.out.println("Playing " + music.getSong());
     }
 }
