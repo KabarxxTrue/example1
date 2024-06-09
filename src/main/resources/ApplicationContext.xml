@@ -9,23 +9,13 @@
 
     <context:property-placeholder location="musicPlayer.properties"/>
 
-    <bean id="musicBean"
-          class="com.kabarxx.example.ClassicalMusic">
-    </bean>
+    <bean id="classicalMusic" class="com.kabarxx.example.ClassicalMusic"/>
+    <bean id="rapMusic" class="com.kabarxx.example.RapMusic"/>
+    <bean id="rockMusic" class="com.kabarxx.example.RockMusic"/>
 
-    <bean id="musicBean"
-          class="com.kabarxx.example.RapMusic">
-    </bean>
-
-    <bean id="musicBean"
-          class="com.kabarxx.example.RockMusic">
-    </bean>
-
-    <bean id="musicPlayer"
-          class="com.kabarxx.example.MusicPlayer">
-        <property name="music" ref="musicBean"/>
-
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
+    <bean id="musicPlayer" class="com.kabarxx.example.MusicPlayer">
+        <constructor-arg ref="classicalMusic"/>
+        <constructor-arg ref="rapMusic"/>
+        <constructor-arg ref="rockMusic"/>
     </bean>
 </beans>
