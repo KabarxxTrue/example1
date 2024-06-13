@@ -7,17 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="classicalMusic" class="com.kabarxx.example.ClassicalMusic"/>
-    <bean id="rapMusic" class="com.kabarxx.example.RapMusic"/>
-    <bean id="rockMusic" class="com.kabarxx.example.RockMusic"/>
+    <context:component-scan base-package="com.kabarxx.example" />
 
-    <bean id="musicPlayer" class="com.kabarxx.example.MusicPlayer">
-        <property name="musicList">
-            <list>
-                <ref bean="classicalMusic"/>
-                <ref bean="rapMusic"/>
-                <ref bean="rockMusic"/>
-            </list>
-        </property>
-    </bean>
 </beans>
