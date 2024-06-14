@@ -14,14 +14,14 @@ public class MusicPlayer {
 
     public void playAll() {
         for(Music music : musicList) {
-            music.getSong();
+            System.out.println(music.getSong());
         }
     }
 
     public void playRandomMusic() {
         if (!musicList.isEmpty()) {
             int index = random.nextInt(musicList.size());
-            musicList.get(index).getSong();
+            System.out.println(musicList.get(index).getSong());
         } else {
             System.out.println("Music player is empty");
         }

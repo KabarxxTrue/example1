@@ -9,9 +9,12 @@ public class TestSpring {
         );
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        System.out.println("Playing all music");
+        System.out.println("Playing all music: ");
         musicPlayer.playAll();
-        System.out.println("Playing random music");
+
+        System.out.println("--------------------------------------");
+
+        System.out.println("Playing random music: ");
         musicPlayer.playRandomMusic();
 
         context.close();
