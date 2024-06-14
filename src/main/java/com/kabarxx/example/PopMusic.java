@@ -1,9 +1,9 @@
 package com.kabarxx.example;
 
-public class RapMusic implements Music {
+public class PopMusic implements Music {
     @Override
     public String getSong() {
-        return "Rap music";
+        return "Playing pop music";
     }
 
 }

@@ -1,43 +1,29 @@
 package com.kabarxx.example;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import java.util.List;
+import java.util.Random;
 
-@Component
 public class MusicPlayer {
-    @Value("${musicPlayer.name}")
-    private String name;
-    @Value("${musicPlayer.volume}")
-    private int volume;
+    protected List<Music> musicList;
+    protected Random random;
 
-    public String getName() {
-        return name;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+        this.random = new Random();
     }
 
-    public int getVolume() {
-        return volume;
+    public void playAll() {
+        for(Music music : musicList) {
+            music.getSong();
+        }
     }
 
-    private final Music classicalMusic;
-    private final Music rockMusic;
-
-    @Autowired
-    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
-                       @Qualifier("rockMusic") Music rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-    }
-
-    public String playMusic(SongsEnum enumSongs) {
-        switch (enumSongs) {
-            case CLASSICAL:
-                return "Playing " + classicalMusic.getSong();
-            case ROCK:
-                return "Playing " + rockMusic.getSong();
-            default:
-                return "Enum not recognized";
+    public void playRandomMusic() {
+        if (!musicList.isEmpty()) {
+            int index = random.nextInt(musicList.size());
+            musicList.get(index).getSong();
+        } else {
+            System.out.println("Music player is empty");
         }
     }
 }
