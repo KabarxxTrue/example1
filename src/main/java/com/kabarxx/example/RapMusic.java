@@ -11,13 +11,4 @@ public class RapMusic implements Music {
         return "Rap music";
     }
 
-    @Override
-    public void beanInitLifeCycle() {
-        System.out.println("Rap music is initialized");
-    }
-
-    @Override
-    public void beanDestroyLifeCycle() {
-        System.out.println("Rap music is destructed");
-    }
 }

@@ -1,19 +1,43 @@
 package com.kabarxx.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MusicPlayer {
-    List<Music> musicList = new ArrayList<>();
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
 
-    public MusicPlayer() {}
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
+    public String getName() {
+        return name;
     }
 
-    public void playMusicList() {
-        for(Music music : musicList)
-            System.out.println("Playing " + music.getSong());
+    public int getVolume() {
+        return volume;
+    }
+
+    private final Music classicalMusic;
+    private final Music rockMusic;
+
+    @Autowired
+    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
+                       @Qualifier("rockMusic") Music rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+    }
+
+    public String playMusic(SongsEnum enumSongs) {
+        switch (enumSongs) {
+            case CLASSICAL:
+                return "Playing " + classicalMusic.getSong();
+            case ROCK:
+                return "Playing " + rockMusic.getSong();
+            default:
+                return "Enum not recognized";
+        }
     }
 }

@@ -1,23 +1,25 @@
 package com.kabarxx.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 @Component
+@Scope("prototype")
 public class ClassicalMusic implements Music {
-    public ClassicalMusic() {}
+    private final List<String> classicalMusic =
+            Arrays.asList(
+                    "Classical music 1",
+                    "Classical music 2",
+                    "Classical music 3"
+            );
 
     @Override
     public String getSong() {
-        return "Classical music";
-    }
-
-    @Override
-    public void beanInitLifeCycle() {
-        System.out.println("Classical music is initialized");
-    }
-
-    @Override
-    public void beanDestroyLifeCycle() {
-        System.out.println("Classical music is destructed");
+        return classicalMusic.get(new Random().nextInt(classicalMusic.size()));
     }
 }
